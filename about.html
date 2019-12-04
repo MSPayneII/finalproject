@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/html5reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $("button").click(function(){
+          $("#mobile_nav").toggle();
+        });
+
+        $("form").submit(function(event){
+          if ($('input[name="firstname"]').val().length == 0){
+            // console.log("first name error");
+            $("#firstnameerrormsg").show();
+            event.preventDefault();
+          }
+          else{
+            $("#lastnameerrormsg").hide();
+          }
+          if ($('input[name="lastname"]').val().length == 0){
+            // console.log("last name error");
+            $("#lastnameerrormsg").show();
+            event.preventDefault();
+          }
+          else{
+            $("#firstnameerrormsg").hide();
+          }
+          if ($('input[name="email"]').val().length == 0){
+            // console.log("email error");
+            $("#emailerrormsg").show();
+            event.preventDefault();
+          }
+          else{
+            $("#emailerrormsg").hide();
+          }
+          if ($('textarea[name="message"]').val().length == 0){
+            // console.log("message error");
+            $("#texterrormsg").show();
+            event.preventDefault();
+          }
+          else{
+            $("#texterrormsg").hide();
+          }
+        });
+
+        /* borrowed and adapted this code from https://learnwebtutorials.com/how-to-make-a-jquery-carousel */
+
+        $("#gallery_carousel .next a").click(function(event){
+          event.preventDefault();
+          let currentSlide = $("#gallery_carousel li.active");
+
+          let nextSlide = $("#gallery_carousel li.active").next();
+
+          currentSlide.removeClass("active").hide();
+
+          if (nextSlide.length === 0){
+            nextSlide = $("#gallery_carousel li").first();
+          }
+          nextSlide.addClass("active").show();
+        });
+
+        $("#gallery_carousel .prev a").click(function(event){
+          event.preventDefault();
+          let currentSlide = $("#gallery_carousel li.active");
+
+          let prevSlide = $("#gallery_carousel li.active").prev();
+
+          currentSlide.removeClass("active").hide();
+
+          if (prevSlide.length === 0){
+            prevSlide = $("#gallery_carousel li").last();
+          }
+          prevSlide.addClass("active").show();
+        });
+      });
+    </script>
+
+    <title>About Me</title>
+  </head>
+  <body>
+    <header>
+      <div class="skip"><a href="#main">Skip to Main Content</a></div>
+
+      <div id="navigation">
+        <div id="logo">
+          <h1>Michael S. Payne II</h1>
+          <h2>User Experience Researcher and Information Designer</h2>
+        </div>
+
+        <div id="mobile_nav">
+        <nav>
+          <ul class="mobile_nav_links">
+            <li class="nav_item"><a class="current" href="index.html">HOME</a></li>
+            <li class="nav_item"><a href="mypsych.html">MYPSYCH</a></li>
+            <li class="nav_item"><a href="websitecomparison.html">WEBCOMP</a></li>
+            <li class="nav_item"><a href="about.html">ABOUT</a></li>
+          </ul>
+        </nav>
+        </div>
+
+        <div>
+        <button type="button" id="menu_button" name="button">Menu</button>
+        </div>
+
+        <nav>
+          <ul class="nav_links">
+            <li class="nav_item"><a href="index.html">HOME</a></li>
+            <li class="nav_item"><a href="mypsych.html">MYPSYCH</a></li>
+            <li class="nav_item"><a href="websitecomparison.html">WEBCOMP</a></li>
+            <li class="nav_item"><a class="current" href="about.html">ABOUT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <div class="container">
+
+        <!-- adapted this code from w3schools flip card demo -->
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/profilepic.jpg" alt="Photo of myself" class="bio_photo" style="height:350px;width:350px;">
+            </div>
+            <div class="flip-back"></div>
+          </div>
+        </div>
+
+        <div class="bio">
+          <h1>Hello, I'm Michael!</h1>
+          <p>I'm pursing a Masters in Information at the University of Michigan. I aspire to be a UX Researcher and Information Designer. I'm currently working as a Laboratory Coordinator for a marketing research lab while I attend school. My goal is to utilize research to create enjoyable experiences for users in hopes of making their lives easier. My core interest are: UX research, UX Design and Mental Health.</p>
+        </div>
+
+
+        <div class="interest_board">
+          <h2 class="section_title">My Interest Board</h2>
+        </div>
+        <!-- borrowed and adapted this code from https://learnwebtutorials.com/how-to-make-a-jquery-carousel -->
+
+        <div id="gallery_carousel">
+          <div class="prev"><a href="">&lt;</a></div>
+          <div id="images">
+          <ul>
+            <li class="active"><a href="images/hookgrip_logo_2.png"><img id="image1" src="images/hookgrip_logo_2.png" width= "400px height=" 400px" alt="Olympic Weightlifting Logo"/></a></li>
+            <li><a href="images/justiceleague.jpeg"><img id="image2" src="images/justiceleague.jpeg" width= "400px" height=" 400px" alt="Justice League Comicbook Cover"/></a></li>
+            <li><a href="images/keyboard.jpg"><img id="image3" src="images/keyboard.jpg" width= "400px" height=" 400px" alt="Keyboard shown in grayscale"/></a></li>
+            <li><a href="images/megaman2.jpeg"><img id="image4" src="images/megaman2.jpeg" width= "400px" height="400px" alt="Mega Man 2 Video Game Cover"></a></li>
+            <li><a href="images/wheeloftimebookcover.jpg"><img id="image5" src="images/wheeloftimebookcover.jpg" width= "400px" height="400px" alt="Wheel of Time Book Cover"/></a></li>
+            <li><a href="images/residentevil.jpeg"><img id="image6" src="images/residentevil.jpeg"  width= "400px" height="400px" alt="Resident Evil Video Game Cover"/></a></li>
+            <li><a href="images/travelbag.jpeg"><img id="image7" src="images/travelbag.jpeg"  width= "400px" height="400px" alt="Picture of a Travelbag"/></a></li>
+            <li><a href="images/streetfighter.png"><img id="image8" src="images/streetfighter.png"  width= "400px" height="400px" alt="Street Fighter Video Game Cover"/></a></li>
+            <li><a href="images/martialarts.png"><img id="image9" src="images/martialarts.png"  width= "400px" height="400px" alt="Black and White Silhouette of a Martial Artist Punching Air"/></a></li>
+          </ul>
+          </div>
+          <div class="next"><a href="">&gt;</a></div>
+        </div>
+
+
+        <!-- code adapted from form discussion assignment -->
+        <!-- got the error message code from the jquery challenge homework -->
+
+        <form class="contact_form" action="https://formspree.io/mnqqpbjl" method="post">
+          <fieldset>
+            <legend><h2 class="section_title">Feel free to contact me!</h2></legend>
+
+            <div class="form-group">
+              <div>
+                <input name="firstname" type="text" placeholder="Enter First Name" class="form-control" aria-label="first name text field">
+                <p class="errormsg" id="firstnameerrormsg">Please enter your first name above!</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <input name="lastname" type="text" placeholder="Enter Last Name" class="form-control" aria-label="first name text field">
+                <p class="errormsg" id="lastnameerrormsg">Please enter your last name above!</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <input name="email" type="text" placeholder="Enter Email Address" class="form-control" aria-label="first name text field">
+
+                <p class="errormsg" id="emailerrormsg">Please enter your email above!</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <textarea class="form-control" name="message" placeholder="Write a Message" aria-label="first name text field"></textarea>
+                <p class="errormsg" id="texterrormsg">Please enter a message above!</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <button type="submit" class="submit_button">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>2019 Site Developed by Michael S. Payne II for SI539 </p>
+    </footer>
+
+  </body>
+</html>
